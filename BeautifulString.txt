@@ -1,0 +1,48 @@
+public class Solution {
+
+    public static int min(int a , int b){
+        if(a>b){return b;}
+        else{return a;}
+    }
+    public static int makeBeautiful(String str) {
+           char [] arr = str.toCharArray();
+           int c1=0;
+           //c1 denoate  difference  b/w vaules at incdices in str and new str starting with zero
+           int c2=0;
+           //new str starting with 1
+           char s1='0';
+           char s2='1';
+           // s1 and s2 expected val in new str
+          
+          for(int i=0 ;i< arr.length ;i++){
+               //iterate over string
+               if(arr[i]=='1'){
+                   if(s1=='0'){
+                       c1++;
+                   }
+                   else{
+                       c2++;
+                   }
+               }
+               else{  // that is arr[i]=='0'
+                    if(s1=='1'){
+                        c1++;
+                    }
+                    else{
+                        c2++;
+                    }
+               }
+               //if s1 is 0 then make it 1 and vise versa for s2 too
+               if(s1=='1'){
+                   s1='0';
+                   s2='1';
+               }
+               else{
+                   s1='1';
+                   s2='0';
+               }
+          }
+          return min(c1 , c2);
+           
+    }
+}
