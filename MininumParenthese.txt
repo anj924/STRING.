@@ -1,0 +1,27 @@
+import java.util.* ;
+import java.io.*; 
+public class Solution {
+	public static int minimumParentheses(String pattern) {
+		// Write your code here.
+		  Stack<Character> stack = new Stack<>();
+        int additionalParentheses = 0;
+
+        for (char c : pattern.toCharArray()) {
+            if (c == '(') {
+                stack.push(c);
+            } else if (c == ')') {
+                if (!stack.isEmpty()) {
+                    stack.pop();
+                } else {
+                    // Need an additional closing parenthesis
+                    additionalParentheses++;
+                }
+            }
+        }
+
+        // The remaining open parentheses in the stack need additional closing parentheses
+        additionalParentheses += stack.size();
+
+        return additionalParentheses;
+	}
+}
